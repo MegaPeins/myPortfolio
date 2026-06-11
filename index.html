@@ -11,15 +11,94 @@
 </head>
 <body>
     <div class="box">
-    <header>
+    <header id="header">
         <h1>Hello, I'm <span>Dima</span>. <br>
             I'm a full stack web developer.</h1>
-        <button class="header_button">View my work ↓</button>
+        <a class="header_button" href="#aside">View my work ↓</a>
     </header>
-     <nav></nav>
-    <aside></aside>
-    <main></main>
-    <footer></footer>
+     <nav>
+        <div class="nav_item nav_item1"><a href="#header">Home</a></div>
+        <div class="nav_item nav_item2"><a href="#aside">About</a></div>
+        <div class="nav_item nav_item3"><a href="#main">Projects</a></div>
+        <div class="nav_item nav_item4"><a href="#contact">Contact</a></div>
+     </nav>
+    <aside id="aside">
+        <h2>About</h2>
+        <div class="aside_left">
+            <img src="./img/user.png" alt="">
+            <p>Я — Full-stack разработчик, увлеченный созданием приложений на JavaScript и React. Легко нахожу общий язык с людьми, умею продуктивно работать в команде и быстро адаптируюсь к новым задачам. Уверенное владение Git позволяет мне эффективно взаимодействовать с другими разработчиками и поддерживать чистоту кода в совместных проектах. В свободное время предпочитаю отдыхать на свежем воздухе и проводить время в компании друзей.</p>
+        </div>
+        <div class="aside_right">
+            <div class="aside_language">
+                <img src="./img/JavaScriptL.png" alt="">
+                <p>JAVASCRIPT</p>
+            </div>
+            <div class="aside_language">
+                <img class="imgLong" src="./img/HTMLl.png" alt="">
+                <p>HTML</p>
+            </div>
+            <div class="aside_language">
+                <img class="imgLong" src="./img/CSSl.png" alt="">
+                <p>CSS</p>
+            </div>
+            <div class="aside_language">
+                <img class="imgShort" src="./img/ReactL.png" alt="">
+                <p>REACT</p>
+            </div>
+            <div class="aside_language">
+                <img src="./img/GITl.png" alt="">
+                <p>GIT</p>
+            </div>
+        </div>
+    </aside>
+    <main id="main">
+        <h2>Projects</h2>
+        <div class="main_item">
+            <img class="main_img" src="./img/imgport2.png" alt="">
+            <div class="main_item_right">
+            <h3>*App Name* App</h3>
+            <p>Description app. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.</p>
+            <button class="main_button">LIVE APP</button>
+            <button class="main_button">LEARN MORE</button>
+        </div>
+        </div>
+        <div class="main_item">
+            <div class="main_item_right main_item_left">
+            <h3>*App Name* App</h3>
+            <p>Description app. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.</p>
+            <button class="main_button">LIVE APP</button>
+            <button class="main_button">LEARN MORE</button>
+        </div>
+        <img class="main_img" src="./img/imgport2.png" alt="">
+        </div>
+        <div class="main_item">
+            <img class="main_img" src="./img/imgport2.png" alt="">
+            <div class="main_item_right">
+            <h3>*App Name* App</h3>
+            <p>Description app. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.</p>
+            <button class="main_button">LIVE APP</button>
+            <button class="main_button">LEARN MORE</button>
+        </div>
+        </div>
+    </main>
+    <div class="contact" id="contact">
+        <h2>Contact</h2>
+        <p>Есть вопросы или хотите поработать вместе? Оставьте свои контакты, и я свяжусь с вами как можно скорее.</p>
+        <form class="contact_form" action="" method="POST">
+            <input class="form_input" type="text" placeholder="Name">
+            <input class="form_input" type="email" placeholder="Email">
+            <textarea name="messageArea" id="" class="form_message" placeholder="Message" rows="5"></textarea>
+            <input type="button" class="main_button" value="SUBMIT">
+        </form>
+    </div>
+    <footer>
+        <a class="footer_button" href="#header">>></a>
+        <div class="social">
+        <a href="https://github.com/MegaPeins"><img class="footerSoc" src="./img/githubLogo.svg" alt=""></a>
+        <a href="mailto:dimon.bykhno@gmail.com"><img class="footerSoc" src="./img/emailLogo.png" alt=""></a>
+        </div>
+        <p>DIMA BYKHNO ©2025</p>
+    </footer>
     </div>
 </body>
 </html>
