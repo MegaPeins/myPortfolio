@@ -73,13 +73,11 @@ for (let i = 0; i < particleCount; i++) {
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Обновляем и рисуем точки (они сами посчитают свою яркость)
     particles.forEach(p => {
         p.update();
         p.draw();
     });
 
-    // Рисуем линии
     for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
             const dx = particles[i].x - particles[j].x;
@@ -87,15 +85,11 @@ function animate() {
             const distance = Math.sqrt(dx * dx + dy * dy);
 
             if (distance < connectionDistance) {
-                // Базовая прозрачность линии от расстояния между точками
                 const lineAlpha = (connectionDistance - distance) / connectionDistance;
                 
-                // ЭФФЕКТ ТУМАНА ДЛЯ ЛИНИЙ:
-                // Считаем, насколько близко центр этой линии находится к мышке
-                let fogModifier = 0.1; // Базовая видимость линий в тумане (10%)
+                let fogModifier = 0.1;
 
                 if (mouse.x !== null && mouse.y !== null) {
-                    // Берем среднюю точку (центр линии)
                     const midX = (particles[i].x + particles[j].x) / 2;
                     const midY = (particles[i].y + particles[j].y) / 2;
                     
@@ -104,9 +98,8 @@ function animate() {
                     const mouseDist = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
 
                     if (mouseDist < mouseDistance) {
-                        // Чем ближе к мыши центр линии, тем сильнее "рассеивается туман"
                         const proximity = (mouseDistance - mouseDist) / mouseDistance;
-                        fogModifier = 0.1 + proximity * 0.7; // До 80% яркости в эпицентре
+                        fogModifier = 0.1 + proximity * 0.7;
                     }
                 }
 
@@ -114,14 +107,12 @@ function animate() {
                 ctx.moveTo(particles[i].x, particles[i].y);
                 ctx.lineTo(particles[j].x, particles[j].y);
                 
-                // Перемножаем прозрачность дистанции и эффект тумана от мыши
                 ctx.strokeStyle = `rgba(56, 189, 248, ${lineAlpha * fogModifier})`; 
                 ctx.lineWidth = 1;
                 ctx.stroke();
             }
         }
 
-        // Рисуем линии от самой МЫШКИ к ближайшим точкам (оставляем из прошлого шага)
         if (mouse.x !== null && mouse.y !== null) {
             const dxMouse = mouse.x - particles[i].x;
             const dyMouse = mouse.y - particles[i].y;
@@ -132,7 +123,7 @@ function animate() {
                 ctx.beginPath();
                 ctx.moveTo(mouse.x, mouse.y);
                 ctx.lineTo(particles[i].x, particles[i].y);
-                ctx.strokeStyle = `rgba(56, 189, 248, ${alpha * 0.7})`; // Яркие линии прямо к курсору
+                ctx.strokeStyle = `rgba(56, 189, 248, ${alpha * 0.7})`;
                 ctx.lineWidth = 1.2;
                 ctx.stroke();
             }
@@ -143,3 +134,32 @@ function animate() {
 }
 
 animate();
+
+
+const sections = document.querySelectorAll('header, aside, main, .contact');
+const navLinks = document.querySelectorAll('.nav_item a');
+
+const observerOptions = {
+    root: null,
+    rootMargin: "-20% 0px -60% 0px", 
+    threshold: 0
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            const id = entry.target.getAttribute('id');
+
+            navLinks.forEach(link => {
+                if(link.getAttribute('href') === `#${id}`){
+                    link.classList.add('active');
+                }
+                else{
+                    link.classList.remove('active');
+                }
+            })
+        }
+    })
+}, observerOptions);
+
+sections.forEach(section => observer.observe(section))
