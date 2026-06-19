@@ -163,3 +163,12 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 sections.forEach(section => observer.observe(section))
+
+document.getElementById('contact-form').addEventListener('submit', function(event){
+    emailjs.sendForm('service_gpupxx2', 'template_kgr317d', this)
+    .then(() => {
+        alert('Письмо отправлено успешно!');
+    }, (error) => {
+        alert('Ошибка отправки: ' + JSON.stringify(error));
+    });
+});

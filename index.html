@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "UjFL-3EDChHj7hFuY",
+      });
+   })();
+</script>
 </head>
 <body>
     <div class="box">
@@ -86,11 +94,11 @@
     <div class="contact" id="contact">
         <h2>Contact</h2>
         <p>Есть вопросы или хотите поработать вместе? Оставьте свои контакты, и я свяжусь с вами как можно скорее.</p>
-        <form class="contact_form" action="" method="POST">
-            <input class="form_input" type="text" placeholder="Name">
-            <input class="form_input" type="email" placeholder="Email">
-            <textarea name="messageArea" id="" class="form_message" placeholder="Message" rows="5"></textarea>
-            <input type="button" class="main_button" value="SUBMIT">
+        <form class="contact_form" id="contact-form">
+            <input class="form_input" name="user_name" type="text" placeholder="Name">
+            <input class="form_input" name="user_email" type="email" placeholder="Email">
+            <textarea name="message" id="" class="form_message" placeholder="Message" rows="5"></textarea>
+            <button type="submit" class="main_button">SUBMIT</button>
         </form>
     </div>
     <footer>
