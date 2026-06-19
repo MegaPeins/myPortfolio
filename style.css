@@ -188,6 +188,7 @@ main{
     font-size: 18px;
     background: none;
     border: none;
+    text-decoration: none;
     color: white;
     cursor: pointer;
     background-image: linear-gradient(rgb(255, 81, 81), rgb(255, 81, 81));
